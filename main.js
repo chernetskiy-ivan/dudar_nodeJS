@@ -1,7 +1,23 @@
-const things = require('./things')
+const events = require('events')
+const util = require('util')
 
-console.log(things.some_value)
+const Cars = function(model){
+    this.model = model
+}
 
-console.log(things.arr_len([1,2,3,4,5]))
+util.inherits(Cars, events.EventEmitter)
 
-console.log(things.multiply(60,3))
+const bmw = new Cars('BMW')
+const audi = new Cars('AUDI')
+const mers = new Cars('MERS')
+const opel = new Cars('OPEL')
+
+const cars = [bmw, audi, mers, opel]
+cars.forEach( car => {
+    car.on('speed', text => {console.log(car.model + ' speed is ' + text)})
+})
+
+bmw.emit('speed', '170')
+audi.emit('speed', '180')
+mers.emit('speed', '190')
+opel.emit('speed', '1700')
