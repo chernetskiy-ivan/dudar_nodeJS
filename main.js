@@ -1,23 +1,13 @@
-const events = require('events')
-const util = require('util')
+const fs = require('fs')
 
-const Cars = function(model){
-    this.model = model
-}
-
-util.inherits(Cars, events.EventEmitter)
-
-const bmw = new Cars('BMW')
-const audi = new Cars('AUDI')
-const mers = new Cars('MERS')
-const opel = new Cars('OPEL')
-
-const cars = [bmw, audi, mers, opel]
-cars.forEach( car => {
-    car.on('speed', text => {console.log(car.model + ' speed is ' + text)})
+//асинхронное удаление файла
+fs.unlink('./new-one/some_new.txt', () => {
+    fs.rmdir('new-one', () => {console.log('Папка удалена')})
 })
+// fs.mkdir('new-one', () => {
+//     fs.writeFile('./new-one/some_new.txt', 'Привет мир' ,() => {
+//         console.log('Все сработало')
+//     })
+// })
 
-bmw.emit('speed', '170')
-audi.emit('speed', '180')
-mers.emit('speed', '190')
-opel.emit('speed', '1700')
+//ВАЖНО!!! ЧТОБЫ УДАЛИТЬ ПАПКУ С ФАЙЛАМИ - СНАЧАЛА НАДА УДАЛИТЬ ФАЙЛЫ А ЗАТЕМ САМУ ПАПКУ
