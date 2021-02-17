@@ -20,14 +20,22 @@
 //
 // fs.writeFileSync('exemple.txt', 'Привет мир! Встречай меня')
 
-const http = require('http')
+// const http = require('http')
+//
+// const server = http.createServer( (req, res) => {
+//     console.log('URL: ' + req.url)
+//     res.writeHead(200, {'Content-Type':'text/plain;charset=utf-8'})
+//     res.end('Привет мир\n')
+// })
+//
+// server.listen(3000,'127.0.0.1')
+//
+// console.log('мы отслеживаем порт 3000')
 
-const server = http.createServer( (req, res) => {
-    console.log('URL: ' + req.url)
-    res.writeHead(200, {'Content-Type':'text/plain;charset=utf-8'})
-    res.end('Привет мир')
+const fs = require('fs')
+
+const myReadShort = fs.createReadStream(__dirname +'/compucter.txt')
+
+myReadShort.on('data', (chunk) => {
+    console.log('новые данные получены:\n' + chunk)
 })
-
-server.listen(3000,'127.0.0.1')
-
-console.log('мы отслеживаем порт 3000')
