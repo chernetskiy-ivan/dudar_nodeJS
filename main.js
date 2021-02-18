@@ -20,24 +20,24 @@
 //
 // fs.writeFileSync('exemple.txt', 'Привет мир! Встречай меня')
 
-const fs = require('fs')
-const http = require('http')
-
-const server = http.createServer( (req, res) => {
-    console.log('URL: ' + req.url)
-    if( req.url === '/index' || req.url === '/') {
-        res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'})
-        fs.createReadStream(__dirname + '/index.html').pipe(res)
-    } else{
-        res.writeHead(404, {'Content-Type':'text/html; charset=utf-8'})
-        fs.createReadStream(__dirname + '/404.html').pipe(res)
-    }
-
-})
-
-server.listen(3000,'127.0.0.1')
-
-console.log('мы отслеживаем порт 3000')
+// const fs = require('fs')
+// const http = require('http')
+//
+// const server = http.createServer( (req, res) => {
+//     console.log('URL: ' + req.url)
+//     if( req.url === '/index' || req.url === '/') {
+//         res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'})
+//         fs.createReadStream(__dirname + '/index.html').pipe(res)
+//     } else{
+//         res.writeHead(404, {'Content-Type':'text/html; charset=utf-8'})
+//         fs.createReadStream(__dirname + '/404.html').pipe(res)
+//     }
+//
+// })
+//
+// server.listen(3000,'127.0.0.1')
+//
+// console.log('мы отслеживаем порт 3000')
 
 // const fs = require('fs')
 //
@@ -47,3 +47,20 @@ console.log('мы отслеживаем порт 3000')
 //     console.log('новые данные получены:\n' + chunk)
 // })
 
+const express = require('express')
+
+const app = express()
+
+app.get('/', (req, res)=>{
+    res.send('this is home')
+})
+
+app.get('/news', (req, res)=>{
+    res.send('this is news')
+})
+
+app.get('/news/:id/:some', (req, res)=>{
+    res.send('ID is - ' + req.params.id + ' Some - ' + req.params.some)
+})
+
+app.listen(2000)
