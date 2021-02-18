@@ -1,0 +1,27 @@
+{
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "name": "dudar",
+  "version": "1.0.0",
+  "description": "example app",
+  "main": "main.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chernetskiy-ivan/dudar_nodeJS.git"
+  },
+  "keywords": [
+    "example",
+    "app"
+  ],
+  "author": "Ivan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chernetskiy-ivan/dudar_nodeJS/issues"
+  },
+  "homepage": "https://github.com/chernetskiy-ivan/dudar_nodeJS#readme"
+}
