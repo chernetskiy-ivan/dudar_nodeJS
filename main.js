@@ -62,7 +62,9 @@ app.get('/news', (req, res)=>{
 })
 
 app.get('/news/:id', (req, res)=>{
-    res.send('ID is - ' + req.params.id)
+    //render ищет файлы которые уже находяться в папке views
+    //отправляем в шаблонизатор параметр newsId со значением req.param.id
+    res.render('news', {newsId: req.params.id})
 })
 
 app.listen(2000)
