@@ -62,7 +62,7 @@ app.get('/news', (req, res)=>{
 })
 
 app.get('/news/:id', (req, res)=>{
-    const obj = {title: 'новость', id: 3}
+    const obj = {title: 'новость', id: 3, paragraphs: ['Иван', 'Обычный текст', 'Числа: 2, 4, 6', 99]}
     //render ищет файлы которые уже находяться в папке views
     //отправляем в шаблонизатор параметр newsId со значением req.param.id
     res.render('news', {newsId: req.params.id, obj: obj})

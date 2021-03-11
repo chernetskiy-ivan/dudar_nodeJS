@@ -13,5 +13,12 @@
     <p>Accept obj in ejs</p>
     <p>Title of page <strong><%= obj.title %></strong></p>
     <p>ID of page <strong><%= obj.id %></strong></p>
+
+    <p>Show all elements in array</p>
+    <ul>
+        <% obj.paragraphs.forEach(item => { %>
+            <li><%= item %></li>
+        <% })%>
+    </ul>
 </body>
 </html>
