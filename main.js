@@ -51,16 +51,18 @@ const express = require('express')
 
 const app = express()
 
+app.set('view engine','ejs')
+
 app.get('/', (req, res)=>{
-    res.send('this is home')
+    res.sendFile(__dirname + '/index.html')
 })
 
 app.get('/news', (req, res)=>{
-    res.send('this is news')
+    res.sendFile(__dirname + '/404.html')
 })
 
-app.get('/news/:id/:some', (req, res)=>{
-    res.send('ID is - ' + req.params.id + ' Some - ' + req.params.some)
+app.get('/news/:id', (req, res)=>{
+    res.send('ID is - ' + req.params.id)
 })
 
 app.listen(2000)
