@@ -48,8 +48,11 @@
 // })
 
 const express = require('express')
+const bodyParser = require('body-parser')
 
 const app = express()
+
+const urlencodedParser = bodyParser.urlencoded({extend: false})
 
 app.set('view engine','ejs')
 
@@ -58,6 +61,12 @@ app.get('/', (req, res)=>{
 })
 
 app.get('/news', (req, res)=>{
+    res.sendFile(__dirname + '/404.html')
+})
+
+app.post('/news', urlencodedParser, (req, res)=>{
+    if(!req.body) return res.sendStatus(400)
+    console.log(req.body)
     res.sendFile(__dirname + '/404.html')
 })
 
