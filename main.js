@@ -68,4 +68,4 @@ app.get('/news/:id', (req, res)=>{
     res.render('news', {newsId: req.params.id, obj: obj})
 })
 
-app.listen(2000)
+app.listen(3000)
